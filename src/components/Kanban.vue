@@ -1,5 +1,6 @@
 <template>
   <div class="kanban">
+    
     <div
       class="column"
       :style="{ backgroundColor: column.color }"
@@ -44,7 +45,7 @@
         v-model="task_name"
         @keyup.13="submit_create_task"
       /> -->
-      
+
       <b-form-group label="Task Name" label-for="task_name">
         <b-form-input
           id="task-name"
@@ -63,8 +64,12 @@
           placeholder="Enter Task Detail"
         ></b-form-input>
       </b-form-group>
-      <b-button @click="submit_create_task"  variant="primary" style="float: right;" >
-        Create
+      <b-button
+        @click="submit_create_task"
+        variant="primary"
+        style="float: right"
+      >
+        Create {{project_id}}
       </b-button>
     </b-modal>
   </div>
@@ -72,6 +77,12 @@
 
 <script>
 export default {
+  computed: {
+    project_id() {
+      // We will see what `params` is shortly
+      return this.$route.params.project_id;
+    },
+  },
   props: {
     create_task_submit: Function,
     move_item_task: Function,
