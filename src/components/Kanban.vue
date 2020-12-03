@@ -19,9 +19,12 @@
           >
             {{ task.task_name }}
           </div>
-          <div class="drop_zone" @dragenter.prevent="drop_zone_enter" >
-
-          </div>
+          <div
+            class="drop_zone"
+            @dragenter.prevent="drop_zone_enter"
+            @dragleave.prevent="drop_zone_leave"
+            @dragover.prevent
+          ></div>
         </div>
 
         <div class="create-task" @click="create_task(index)">Create Task</div>
@@ -57,11 +60,16 @@ export default {
       this.current_column_index = column_index;
       this.current_task_index = task_index;
     },
-    drop_zone_enter(event){
-        event.target.style.height = "100px";
-        event.target.style.borderStyle = "dotted"
-        event.target.style.transition = "height 0.5s"
-    }
+    drop_zone_enter(event) {
+      event.target.style.height = "100px";
+      event.target.style.borderStyle = "dotted";
+      event.target.style.transition = "height 0.5s";
+    },
+    drop_zone_leave(event) {
+      event.target.style.height = "10px";
+      event.target.style.borderStyle = "none";
+      event.target.style.transition = "height 0.5s";
+    },
   },
   data() {
     return {
@@ -126,7 +134,7 @@ export default {
   margin: 10px;
   background-color: bisque;
 }
-.drop_zone{
-    height: 10px;
+.drop_zone {
+  height: 10px;
 }
 </style>
