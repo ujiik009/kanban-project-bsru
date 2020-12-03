@@ -36,7 +36,7 @@ export default {
       this.$refs["create-task-modal"].show();
     },
     submit_create_task() {
-      this.create_task_submit(this.current_column_index, { task_name: "" });
+      this.create_task_submit(this.current_column_index, { task_name: this.task_name });
       alert(this.current_column_index + " " + this.task_name);
     },
   },
