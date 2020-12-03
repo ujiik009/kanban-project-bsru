@@ -35,8 +35,8 @@ export default {
     }
   },
   methods:{
-    create_task_submit(){
-
+    create_task_submit(column_index,item){
+      this.data[column_index].tasks.push(item)
     }
   }
 }

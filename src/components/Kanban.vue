@@ -11,6 +11,10 @@
       </div>
 
       <div class="column-body">
+
+          <div class="task">
+
+          </div>
         <div class="create-task" @click="create_task(index)">Create Task</div>
       </div>
     </div>
@@ -37,7 +41,7 @@ export default {
     },
     submit_create_task() {
       this.create_task_submit(this.current_column_index, { task_name: this.task_name });
-      alert(this.current_column_index + " " + this.task_name);
+     
     },
   },
   data() {
@@ -93,5 +97,13 @@ export default {
 
 .input-task-name {
   width: 100%;
+}
+.task{
+    position: relative;
+    width: auto;
+    height: 100px;
+    border-radius: 2px;
+    margin: 10px;
+    background-color: bisque;
 }
 </style>
