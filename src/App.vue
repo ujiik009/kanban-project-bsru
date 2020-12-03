@@ -7,7 +7,6 @@
     />
   </div>
 </template>
-
 <script>
 import Kanban from "./components/Kanban";
 
