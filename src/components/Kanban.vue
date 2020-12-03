@@ -14,8 +14,8 @@
         <div class="create-task" @click="create_task(index)">Create Task</div>
       </div>
     </div>
-    <b-modal ref="create-task-modal"  title="Create Task">
-      <p class="my-4">Hello from modal!</p>
+    <b-modal ref="create-task-modal" title="Create Task">
+      <input class="input-task-name" v-model="task_name" /> 
     </b-modal>
   </div>
 </template>
@@ -27,9 +27,15 @@ export default {
   },
   methods: {
     create_task(index_column) {
-        console.log(index_column);
-      this.$refs["create-task-modal"].show()
+      this.current_column_index = index_column;
+      this.$refs["create-task-modal"].show();
     },
+  },
+  data() {
+    return {
+      task_name: "",
+      current_column_index: "",
+    };
   },
 };
 </script>
@@ -74,5 +80,9 @@ export default {
 }
 .create-task:hover {
   background-color: rgb(158, 155, 155);
+}
+
+.input-task-name{
+    width: 100%;
 }
 </style>
