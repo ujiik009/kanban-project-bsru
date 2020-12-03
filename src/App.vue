@@ -19,7 +19,12 @@ export default {
         {
           name:"todo",
           color:"#F5B271",
-          tasks:[]
+          tasks:[
+            {
+              task_name:"test"
+            }
+
+          ]
         },
          {
           name:"doing",
