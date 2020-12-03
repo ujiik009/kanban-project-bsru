@@ -24,7 +24,10 @@ export default {
           color: "#F5B271",
           tasks: [
             {
-              task_name: "test",
+              task_name: "test1",
+            },
+            {
+              task_name: "test2",
             },
           ],
         },
@@ -33,7 +36,7 @@ export default {
           color: "#BEA771",
           tasks: [
             {
-              task_name: "test",
+              task_name: "test3",
             },
           ],
         },
@@ -41,9 +44,7 @@ export default {
           name: "done",
           color: "#1B796F",
           tasks: [
-            {
-              task_name: "test",
-            },
+          
           ],
         },
       ],

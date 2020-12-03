@@ -11,6 +11,13 @@
       </div>
 
       <div class="column-body">
+        <div
+          class="drop_zone"
+          @dragenter.prevent="drop_zone_enter"
+          @dragleave.prevent="drop_zone_leave"
+          @dragover.prevent
+          @drop="drop_item(index, 0, $event)"
+        ></div>
         <div v-for="(task, task_index) in column.tasks" :key="task_index">
           <div
             class="task"
@@ -24,10 +31,9 @@
             @dragenter.prevent="drop_zone_enter"
             @dragleave.prevent="drop_zone_leave"
             @dragover.prevent
-            @drop="drop_item(index,task_index)"
+            @drop="drop_item(index, (task_index+1), $event)"
           ></div>
         </div>
-
         <div class="create-task" @click="create_task(index)">Create Task</div>
       </div>
     </div>
@@ -46,7 +52,7 @@ export default {
   props: {
     data: Array,
     create_task_submit: Function,
-    move_item_task:Function
+    move_item_task: Function,
   },
   methods: {
     create_task(index_column) {
@@ -72,14 +78,15 @@ export default {
       event.target.style.borderStyle = "none";
       event.target.style.transition = "height 0.5s";
     },
-    drop_item(column_index,task_index){
-        this.move_item_task(
-            this.current_column_index,
-            this.current_task_index,
-            column_index,
-            task_index
-        )
-    }
+    drop_item(column_index, task_index, event) {
+      this.move_item_task(
+        this.current_column_index,
+        this.current_task_index,
+        column_index,
+        task_index
+      );
+      this.drop_zone_leave(event);
+    },
   },
   data() {
     return {
@@ -121,6 +128,7 @@ export default {
   border-radius: 10px;
   padding: 5px;
   background-color: #ffffff7c;
+  overflow: auto;
 }
 .create-task {
   width: 100%;
