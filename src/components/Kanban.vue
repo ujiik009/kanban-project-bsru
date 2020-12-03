@@ -15,7 +15,11 @@
       </div>
     </div>
     <b-modal ref="create-task-modal" title="Create Task">
-      <input class="input-task-name" v-model="task_name"  @keyup.13="submit_create_task"/> 
+      <input
+        class="input-task-name"
+        v-model="task_name"
+        @keyup.13="submit_create_task"
+      />
     </b-modal>
   </div>
 </template>
@@ -24,15 +28,17 @@
 export default {
   props: {
     data: Array,
+    create_task_submit: Function,
   },
   methods: {
     create_task(index_column) {
       this.current_column_index = index_column;
       this.$refs["create-task-modal"].show();
     },
-    submit_create_task(){
-        alert(this.current_column_index +" "+this.task_name )
-    }
+    submit_create_task() {
+      this.create_task_submit(this.current_column_index, { task_name: "" });
+      alert(this.current_column_index + " " + this.task_name);
+    },
   },
   data() {
     return {
@@ -85,7 +91,7 @@ export default {
   background-color: rgb(158, 155, 155);
 }
 
-.input-task-name{
-    width: 100%;
+.input-task-name {
+  width: 100%;
 }
 </style>

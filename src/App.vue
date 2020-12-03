@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Kanban :data="data"/>
+    <Kanban :data="data" :create_task_submit="create_task_submit"/>
   </div>
 </template>
 
@@ -32,6 +32,11 @@ export default {
           tasks:[]
         }
       ]
+    }
+  },
+  methods:{
+    create_task_submit(){
+
     }
   }
 }
