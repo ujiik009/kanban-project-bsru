@@ -15,7 +15,7 @@
       </div>
     </div>
     <b-modal ref="create-task-modal" title="Create Task">
-      <input class="input-task-name" v-model="task_name" /> 
+      <input class="input-task-name" v-model="task_name"  @keyup.13="submit_create_task"/> 
     </b-modal>
   </div>
 </template>
@@ -30,6 +30,9 @@ export default {
       this.current_column_index = index_column;
       this.$refs["create-task-modal"].show();
     },
+    submit_create_task(){
+        alert(this.current_column_index +" "+this.task_name )
+    }
   },
   data() {
     return {
