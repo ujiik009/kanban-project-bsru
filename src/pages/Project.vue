@@ -21,19 +21,22 @@
           style="width: 200px"
           placeholder="Search Your Project"
         ></b-form-input>
+        
       </div>
 
       <div class="project-content-list">
         <b-row>
           <b-col
             cols="3"
-            v-for="projects in projects"
+            v-for="projects in projects.filter(x => (new RegExp(text_search).test(x.project_name)))"
             :key="projects.project_id"
             style="margin-top: 20px"
+            
           >
             <div
               class="project-content-box"
               @click="openKanban(projects.project_id)"
+             
             >
               <div style="font-size: 25px; font-weight: bold">
                 {{ projects.project_name }}
